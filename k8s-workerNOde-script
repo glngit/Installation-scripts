@@ -1,3 +1,17 @@
+manual:
+--------
+>sudo -i
+>adduser siva, pass siva
+>usermod -aG sudo siva
+>vi /etc/ssh/sshd_config
+>password authentication: yes
+>service ssh restart
+
+> To connect    ssh siva@ip, pass
+
+> sudo -i , pass
+
+
 #! /bin/bash
 sudo apt-get update
 
