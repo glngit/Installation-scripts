@@ -14,7 +14,7 @@ Manual:
 
 #k8s-master script:
 --------------
-#--> vi docker.sh    ##### paste the below commands
+#--> vi k8smas.sh    ##### paste the below commands
 #--> chmod a+x k8smas.sh
 #--> ./k8smas.sh
 
