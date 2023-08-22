@@ -1,0 +1,39 @@
+Eks cluster creation:
+-------------------------
+--> create normal ec2 instance with amazon linux, sg- with all trafic,ipv4
+--> login to ec2
+--> sudo su -  (Go to root)
+
+-->curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+-->chmod +x ./kubectl
+-->mv ./kubectl /usr/local/bin 
+-->kubectl version --short --client
+
+-->curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+-->sudo mv /tmp/eksctl /usr/local/bin
+-->eksctl version
+
+-->ll /usr/local/bin  (To see 2 folders eksctl,kubectl)
+
+AWS:
+-----
+--> Go to Iam --> roles --> create role  --> aws server,ec2  --> add iamfullaccess,ec2fullaccess,cloudformationfullaccess,vpcfullaccess,administrator access -->role name(jump-role)
+
+--> Go to ec2 --> select jump(instance) -->Actions-->security-->MOdify IAM--> Iam role (jump-role)
+
+Go to instance (jump):
+----------------------
+eksctl create cluster --name <cluster-name(our choice(awscluster))>  \
+--region us-east-2(choice) \
+--node-type t2.large(choice)
+
+--> cluster starts creation, with in 15 min cluster will create
+
+--> sudo su - ( check root user only access)
+
+--> kubectl get nodes
+
+
+To delete cluster:
+------------------
+eksctl delete cluster <clustername(awscluster)> --region us-east-2
