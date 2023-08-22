@@ -11,7 +11,13 @@ manual:
 
 > sudo -i , pass
 
+#k8s-worker script:
+--------------
+#--> vi k8swor.sh    ##### paste the below commands
+#--> chmod a+x k8swor.sh
+#--> ./k8swor.sh
 
+____________________________________
 #! /bin/bash
 sudo apt-get update
 
