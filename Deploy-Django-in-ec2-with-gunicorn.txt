@@ -1,0 +1,49 @@
+How to deploy django app in ec2 by using gunicorn:
+---------------------------------------------------
+--> send project to ec2
+--> sudo apt update
+--> sudo apt upgrade
+--> sudo apt install python3
+--> sudo apt install python3-venv
+
+--> mkdir virtualenv(choice)
+--> cd virtualenv
+--> python3 -m venv myenv(choice)
+
+--or--
+
+--> python3 -m venv myenv(choice)
+
+--> source virtualenv/myenv/bin/activate    --or--  source myenv/bin/activate
+--> pip install -r requirements.txt
+--> if you want to close virtualenvironment (deactivate)
+
+
+
+--> pip install gunicorn  --or-- add in requirements.txt
+--> gunicorn sampleproj9.wsgi:application
+
+--> go to /etc/systemd/system  vi gunicorn.service
+
+[Unit]
+Description=gunicorn daemon for YourProject
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/jango-dockerfile
+ExecStart=/home/ubuntu/jango-dockerfile/virtualenv/myenv/bin/gunicorn --workers 4 --bind 0.0.0.0:8000  sampleproj9.wsgi:application
+Environment=DJANGO_SETTINGS_MODULE=sampleproj9.settings
+Environment=STATIC_ROOT=/home/ubuntu/static_root
+
+
+--> sudo systemctl start gunicorn
+--> sudo systemctl enable gunicorn
+--> sudo systemctl status gunicorn  (Active)
+
+
+
+
+
+
