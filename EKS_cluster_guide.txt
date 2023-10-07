@@ -1,5 +1,7 @@
 Eks cluster creation:
 -------------------------
+jump-server:
+---------------
 --> create normal ec2 instance with amazon linux, sg- with all trafic,ipv4
 --> login to ec2
 --> sudo su -  (Go to root)
