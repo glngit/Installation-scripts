@@ -39,3 +39,8 @@ eksctl create cluster --name <cluster-name(our choice(awscluster))>  \
 To delete cluster:
 ------------------
 eksctl delete cluster <clustername(awscluster)> --region us-east-2
+
+
+
+
+--->To connect outside to the nodes, change    security group   as    all traffic, anywhere ip4.
